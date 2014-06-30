@@ -1,0 +1,20 @@
+{
+  "name": "xxxxxx",
+  "version": "0.1.0",
+  "description": "xxxxxx",
+  "author": "xxxxxx",
+  "devDependencies": {
+    "gulp-util": "~2.2.14",
+    "gulp": "~3.6.2",
+    "gulp-coffee": "~1.4.3",
+    "gulp-concat": "~2.2.0",
+    "gulp-ruby-sass": "~0.5.0",
+    "gulp-uglify": "~0.3.0",
+    "gulp-livereload": "~1.5.0",
+    "tiny-lr": "0.0.7",
+    "gulp-shell": "~0.2.7",
+    "gulp-sourcemaps": "~0.4.1",
+    "gulp-jshint": "~1.6.3",
+    "browser-sync": "~0.9.1"
+  }
+}
