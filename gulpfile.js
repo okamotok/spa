@@ -14,16 +14,16 @@ var server = lr();
 
 var sassSources   = ['src/*.scss'];
 var coffeeSources = ['src/*.coffee'];
-var jsSources     = ['src/*.js'];
+var jsSources     = ['src/*.js','js/*.js'];
 var reloadSources = ['*.html','css/*.css','img/*'];
 //var reloadSources = [ 'app/**/*.html','app/assets/css/**/*.css','app/assets/imgs/**/*.png','app/assets/js/**/*.js' ];
 
 
 gulp.task('coffee', function() {
   gulp.src(coffeeSources)
-    .pipe(sourcemaps.init())
+    // .pipe(sourcemaps.init())
     .pipe(coffee({ bare: true}).on('error', gutil.log))
-    .pipe(sourcemaps.write())
+    // .pipe(sourcemaps.write())
     .pipe(gulp.dest('./src'))
 });
 
