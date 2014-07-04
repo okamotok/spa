@@ -1,7 +1,4 @@
-/*
- * spa.shell.js
- * Shell module for SPA
-*/
+//spa.shell.js
 
 /*jslint           browser : true, continue : true,
   devel    : true, indent  : 2,    laxbreak : true,
@@ -52,15 +49,13 @@ spa.shell = (function () {
     onClickChat,
     initModule;
 
-  //-------------------- BEGIN UTILITY METHODS -----------------
-
+//-------------------- BEGIN UTILITY METHODS -----------------
   copyAnchorMap = function() {
     return $.extend(true, {}, stateMap.anchor_map);
   };
 
-  //--------------------- BEGIN DOM METHODS --------------------
-
-  /* Begin DOM method /changeAnchorPart/
+//--------------------- BEGIN DOM METHODS --------------------
+  /* DOM method /changeAnchorPart/
   // Purpose : Changes part of the URI anchor component
   // Arguments:
   // * arg_map - The map describing what part of the URI anchor
@@ -160,9 +155,7 @@ spa.shell = (function () {
     return true;
   };
 
-
-  //------------------- BEGIN EVENT HANDLERS -------------------
-
+//------------------- BEGIN EVENT HANDLERS -------------------
   /* Begin Event handler /onHashchange/
   // Purpose : Handles the hashchange event
   // Arguments:
@@ -213,8 +206,25 @@ spa.shell = (function () {
     return false;
   };
 
-  //------------------- BEGIN PUBLIC METHODS -------------------
+//---------------------- BEGIN CALLBACKS ---------------------
+  /* callback method /setChatAnchor/
+  // Example  : setChatAnchor('closed');
+  // Purpose  : Change the chat component of the anchor
+  // Arguments:
+  //   * position_type - may be 'closed' or 'opened'
+  // Action   :
+  //   Changes the URI anchor parameter 'chat' to the requested
+  //   value if possible.
+  // Returns  :
+  //   * true  - requested anchor part was updated
+  //   * false - requested anchor part was not updated
+  // Throws   : none
+  */
+////  setChatAnchor = function(position_type){
+////    return changeAnchorPart({chat : position_type });
+////  };
 
+//------------------- BEGIN PUBLIC METHODS -------------------
   initModule = function($container){
      // load HTML and map jQuery collections
     stateMap.$container = $container;
@@ -231,6 +241,10 @@ spa.shell = (function () {
     $.uriAnchor.configModule({
       schema_map : configMap.anchor_schema_map
     });
+
+    //configure and initialize feature modules
+    spa.chat.configModule({});
+    spa.chat.initModule(jqueryMap.$chat);
 
     /* Handle URI anchor change events.
     // This is done /after/ all feature modules are configured
