@@ -70,7 +70,7 @@ spa.chat = (function () {
     return Number(
       getComputedStyle(elem, '').fontSize.match(/\d*\.?\d*/)[0]
     );
-  }
+  };
 //--------------------- BEGIN DOM METHODS --------------------
   setJqueryMap = function () {
     var $append_target = stateMap.$append_target,
