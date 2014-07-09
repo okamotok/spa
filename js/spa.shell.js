@@ -15,6 +15,7 @@ spa.shell = (function () {
       anchor_schema_map : {
         chat : {opened: true, closed: true}
       },
+      resize_interval : 2000,
       main_html : String()
         + '<div class="spa-shell-head">'
           + '<div class="spa-shell-head-logo"></div>'
@@ -31,12 +32,14 @@ spa.shell = (function () {
     stateMap  = {
       $container : null,
       anchor_map: {},
+      resize_idto : undefined
     },
     jqueryMap = {},
     copyAnchorMap,
     setJqueryMap,
     changeAnchorPart,
     onHashChange,
+    onResize,
     initModule,
     setChatAnchor;
 
@@ -167,6 +170,19 @@ spa.shell = (function () {
     return false;
   }; //end onHashChange()
 
+  onResize = function() {
+    console.log('x');
+    //run only if no other element is being resized
+    if ( stateMap.resize_idto ) { return true; }
+    console.log('xxxxxxx');
+    spa.chat.handleResize();
+    stateMap.resize_idto = setTimeout(
+      function() { stateMap.resize_idto = undefined; },
+      configMap.resize_interval
+    );
+    return true;
+  };
+
 //---------------------- BEGIN CALLBACKS ---------------------
   /* callback method /setChatAnchor/
   // Example  : setChatAnchor('closed');
@@ -222,6 +238,7 @@ spa.shell = (function () {
     // is considered on-load
     */
     $(window)
+      .bind('resize', onResize)
       .bind('hashchange', onHashchange)
       .trigger('hashchange');
   };
