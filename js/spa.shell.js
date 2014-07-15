@@ -171,10 +171,8 @@ spa.shell = (function () {
   }; //end onHashChange()
 
   onResize = function() {
-    console.log('x');
     //run only if no other element is being resized
     if ( stateMap.resize_idto ) { return true; }
-    console.log('xxxxxxx');
     spa.chat.handleResize();
     stateMap.resize_idto = setTimeout(
       function() { stateMap.resize_idto = undefined; },
